@@ -13,9 +13,9 @@ class ccGLMatrix;
 class ccMaterialSet;
 class ccMesh;
 
-class aiMesh;
-class aiMetadata;
-class aiScene;
+struct aiMesh;
+struct aiMetadata;
+struct aiScene;
 
 namespace mioUtils
 {
