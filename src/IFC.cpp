@@ -11,9 +11,9 @@ IFCFilter::IFCFilter() :
    mioAbstractLoader( {
       "MeshIO IFC Filter",
       FileIOFilter::DEFAULT_PRIORITY,
-      QStringList{ "ifc", "stp", "step" },
+      QStringList{ "ifc" },
       "ifc",
-      QStringList{ "MeshIO - IFC file (*.ifc *.stp *.step)" },
+      QStringList{ "MeshIO - IFC file (*.ifc)" },
       QStringList(),
       Import
    } ),
