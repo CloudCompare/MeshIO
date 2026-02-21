@@ -1,13 +1,14 @@
 // Copyright © 2019 Andy Maloney <asmaloney@gmail.com>
 // SPDX-License-Identifier: BSD-3-Clause
 
-#include "assimp/version.h"
-
 #include "MeshIO.h"
 
 #include "COLLADA.h"
 #include "IFC.h"
 #include "glTF.h"
+
+// Must be positioned last, otherwise it conflicts with a Qt header
+#include "assimp/version.h"
 
 MeshIO::MeshIO( QObject *parent ) : QObject( parent ), ccIOPluginInterface( ":/asmaloney/MeshIO/info.json" )
 {
