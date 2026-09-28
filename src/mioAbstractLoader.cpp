@@ -155,7 +155,7 @@ namespace
                continue;
             }
 
-            auto materialSet = mioUtils::createMaterialSetForMesh( mesh, cPath, inScene );
+            ccMaterialSet::Shared materialSet( mioUtils::createMaterialSetForMesh( mesh, cPath, inScene ) );
 
             if ( materialSet != nullptr )
             {
