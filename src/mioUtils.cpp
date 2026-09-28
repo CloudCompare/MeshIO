@@ -157,7 +157,7 @@ namespace mioUtils
 
       const aiString cName = aiMaterial->GetName();
 
-      auto material = ccMaterial::Shared( new ccMaterial( cName.C_Str() ) );
+      auto material = std::make_shared<ccMaterial>( cName.C_Str() );
 
       ccLog::PrintDebug( QStringLiteral( "[MeshIO] Creating material '%1'" ).arg( material->getName() ) );
 
@@ -256,12 +256,11 @@ namespace mioUtils
       // texture coordinates
       bool hasTextureCoordinates = inMesh->HasTextureCoords( 0 );
 
-      TextureCoordsContainer *texCoords = nullptr;
+      TextureCoordsContainer::Shared texCoords;
 
       if ( hasTextureCoordinates )
       {
-         texCoords = new TextureCoordsContainer;
-
+         texCoords.reset( new TextureCoordsContainer );
          texCoords->reserve( inMesh->mNumVertices );
 
          bool allocated = texCoords->isAllocated();
@@ -271,7 +270,7 @@ namespace mioUtils
 
          if ( !allocated )
          {
-            delete texCoords;
+            texCoords.reset();
             hasTextureCoordinates = false;
             ccLog::Warning(
                QStringLiteral( "[MeshIO] Cannot allocate texture coordinates for mesh '%1'" ).arg( name ) );
